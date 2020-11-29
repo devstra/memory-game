@@ -2,26 +2,23 @@ let cardFlipCount = 0;
 let firstCard = null;
 let secondCard = null;
 let correctCardMatches = 0;
-const images = [
-  "icon-1.svg",
-  "icon-1.svg",
-  "icon-2.svg",
-  "icon-2.svg",
-  "icon-3.svg",
-  "icon-3.svg",
-  "icon-4.svg",
-  "icon-4.svg",
-  "icon-5.svg",
-  "icon-5.svg",
-  "icon-6.svg",
-  "icon-6.svg",
-  "icon-7.svg",
-  "icon-7.svg",
-  "icon-8.svg",
-  "icon-8.svg",
-];
 let cards;
 let grid = $(".grid-container");
+
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+const getRandomImages = () => {
+  let imageIndexes = new Set();
+  do {
+    imageIndexes.add(getRandomNumber(1, 51));
+  } while (imageIndexes.size < 8);
+
+  const array = Array.from(imageIndexes);
+
+  return array.concat(array);
+};
 
 const shuffleImages = (img) => {
   let currentIndex = img.length,
@@ -86,10 +83,11 @@ const checkCards = () => {
 };
 
 const initCards = () => {
+  const images = getRandomImages();
   const shuffled = shuffleImages(images);
 
   let cardList = "";
-  for (let index = 0; index < 16; index++) {
+  for (let index = 0; index < images.length; index++) {
     if (index % 4 == 0) {
       switch (index) {
         case 0:
@@ -104,9 +102,9 @@ const initCards = () => {
       }
     }
     cardList +=
-      "<div class='grid-card'><img class='card-image' src=images/" +
+      "<div class='grid-card'><img class='card-image' src='images/icon-" +
       shuffled[index] +
-      " /></div>";
+      ".svg' /></div>";
   }
   grid.html(cardList);
 
