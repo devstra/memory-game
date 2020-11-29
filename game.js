@@ -3,22 +3,22 @@ let firstCard = null;
 let secondCard = null;
 let correctCardMatches = 0;
 const images = [
-  "images/naruto.png",
-  "images/naruto.png",
-  "images/drstone.jpg",
-  "images/drstone.jpg",
-  "images/kilua.png",
-  "images/kilua.png",
-  "images/meliodas.png",
-  "images/meliodas.png",
-  "images/kakashi.jpg",
-  "images/kakashi.jpg",
-  "images/levi.jpg",
-  "images/levi.jpg",
-  "images/mikasa.png",
-  "images/mikasa.png",
-  "images/saitama.jpg",
-  "images/saitama.jpg",
+  "icon-1.svg",
+  "icon-1.svg",
+  "icon-2.svg",
+  "icon-2.svg",
+  "icon-3.svg",
+  "icon-3.svg",
+  "icon-4.svg",
+  "icon-4.svg",
+  "icon-5.svg",
+  "icon-5.svg",
+  "icon-6.svg",
+  "icon-6.svg",
+  "icon-7.svg",
+  "icon-7.svg",
+  "icon-8.svg",
+  "icon-8.svg",
 ];
 let cards;
 let grid = $(".grid-container");
@@ -104,7 +104,7 @@ const initCards = () => {
       }
     }
     cardList +=
-      "<div class='grid-card'><img class='card-image' src=" +
+      "<div class='grid-card'><img class='card-image' src=images/" +
       shuffled[index] +
       " /></div>";
   }
@@ -117,7 +117,6 @@ const initCards = () => {
     $(card).click((e) => {
       e.preventDefault();
 
-      console.log("clicked");
       // Block clicks on disabled cards
       if ($(card).hasClass("disabled")) {
         return;
