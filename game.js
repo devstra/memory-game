@@ -120,6 +120,11 @@ const initCards = () => {
         return;
       }
 
+      // Block clicks when two cards have been flipped
+      if (firstCard != null && secondCard != null) {
+        return;
+      }
+
       cardFlipCount += 1;
       $("#card-flip-count").text(cardFlipCount);
       $(card).toggleClass("open");
